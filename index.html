@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <title>KASTHURI - Healthy Food Products | Pure Ceylon Spices</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KASTHURI Healthy Food Products - 100% Pure Ceylon Spices from Rathnapura. Cash on Delivery Available.">
+    <style>
+        :root {
+            --brand-dark: #1A1A1A;
+            --brand-gold: #FFD700;
+            --brand-white: #FFFFFF;
+            --brand-green: #2ECC71;
+            --bg-light: #fdfaf6;
+            --text-gray: #666;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Noto Sans Sinhala', Arial; background: var(--bg-light); color: var(--brand-dark); line-height: 1.6; }
+
+        /* Header + Nav */
+       .header { background: var(--brand-dark); color: var(--brand-white); padding: 12px 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 15px rgba(0,0,0,0.3); }
+       .nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+       .logo-img { height: 55px; width: auto; }
+       .nav-links a { color: var(--brand-gold); text-decoration: none; margin-left: 30px; font-weight: 600; transition: 0.3s; font-size: 16px; }
+       .nav-links a:hover { color: var(--brand-white); }
+
+        /* Hero Banner */
+       .hero { background: linear-gradient(rgba(26,26,26,0.7), rgba(26,26,26,0.7)), url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1200') center/cover; padding: 110px 20px; text-align: center; color: var(--brand-white); }
+       .hero h1 { font-size: 48px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin-bottom: 15px; color: var(--brand-white); }
+       .hero h1 span { color: var(--brand-gold); }
+       .hero p { font-size: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); margin-bottom: 30px; color: #eee; }
+       .btn-main { background: var(--brand-green); color: var(--brand-white); padding: 16px 40px; text-decoration: none; border-radius: 50px; display: inline-block; font-weight: bold; font-size: 18px; transition: 0.3s; border: 2px solid var(--brand-green); }
+       .btn-main:hover { background: transparent; color: var(--brand-green); transform: scale(1.05); }
+
+        /* Products */
+       .container { max-width: 1200px; margin: 0 auto; padding: 70px 20px; }
+       .section-title { text-align: center; font-size: 38px; color: var(--brand-dark); margin-bottom: 15px; }
+       .section-title span { color: var(--brand-gold); }
+       .section-subtitle { text-align: center; color: var(--text-gray); margin-bottom: 60px; font-size: 17px; }
+       .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+       .product { background: var(--brand-white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; position: relative; border: 1px solid #eee; }
+       .product:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+       .badge { position: absolute; top: 15px; right: 15px; background: var(--brand-gold); color: var(--brand-dark); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+       .product img { width: 100%; height: 240px; object-fit: cover; }
+       .product-content { padding: 25px; }
+       .product h3 { color: var(--brand-dark); margin-bottom: 10px; font-size: 23px; }
+       .product p { color: var(--text-gray); font-size: 15px; margin-bottom: 15px; }
+
+        /* Quantity Controls - අලුත් */
+       .qty-controls { background: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0; }
+       .qty-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+       .qty-row:last-child { margin-bottom: 0; }
+       .qty-label { font-weight: 600; color: var(--brand-dark); font-size: 14px; }
+       .qty-select { padding: 8px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 14px; width: 120px; cursor: pointer; }
+       .qty-input-group { display: flex; align-items: center; gap: 8px; }
+       .qty-btn { background: var(--brand-dark); color: var(--brand-gold); border: none; width: 32px; height: 32px; border-radius: 6px; font-size: 18px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+       .qty-btn:hover { background: var(--brand-gold); color: var(--brand-dark); }
+       .qty-input { width: 50px; text-align: center; padding: 6px; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; font-weight: bold; }
+
+       .price-wrap { display: flex; align-items: center; gap: 12px; margin: 18px 0; }
+       .price { color: var(--brand-green); font-size: 28px; font-weight: bold; }
+       .old-price { text-decoration: line-through; color: #999; font-size: 17px; }
+       .total-price { background: var(--brand-dark); color: var(--brand-gold); padding: 12px; border-radius: 8px; text-align: center; font-size: 20px; font-weight: bold; margin: 15px 0; }
+       .btn { background: var(--brand-green); color: var(--brand-white); padding: 14px; text-decoration: none; display: block; text-align: center; border-radius: 8px; font-weight: bold; transition: 0.3s; border: 2px solid var(--brand-green); cursor: pointer; }
+       .btn:hover { background: #128C7E; border-color: #128C7E; transform: scale(1.02); }
+
+        /* Why Us Section */
+       .features { background: var(--brand-white); padding: 80px 20px; }
+       .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 45px; max-width: 1100px; margin: 50px auto 0; text-align: center; }
+       .feature { padding: 25px; }
+       .feature-icon { font-size: 55px; margin-bottom: 20px; }
+       .feature h3 { margin-bottom: 12px; color: var(--brand-dark); font-size: 22px; }
+       .feature h3 span { color: var(--brand-gold); }
+
+        /* Reviews */
+       .reviews { background: var(--bg-light); padding: 80px 20px; }
+       .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto 0; }
+       .review { background: var(--brand-white); padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 4px solid var(--brand-gold); }
+       .review-stars { color: var(--brand-gold); font-size: 20px; margin-bottom: 12px; }
+       .review-text { color: #555; margin-bottom: 18px; font-style: italic; font-size: 16px; }
+       .review-author { font-weight: bold; color: var(--brand-dark); }
+       .review-location { color: var(--brand-green); font-size: 14px; font-weight: 500; }
+
+        /* Footer */
+       .footer { background: var(--brand-dark); color: #ccc; padding: 60px 20px 25px; text-align: center; }
+       .footer-logo { height: 70px; margin-bottom: 20px; }
+       .footer h3 { color: var(--brand-gold); margin-bottom: 25px; font-size: 26px; }
+       .footer p { margin: 10px 0; font-size: 16px; }
+       .footer-links { margin: 35px 0; }
+       .footer-links a { color: #ccc; text-decoration: none; margin: 0 18px; transition: 0.3s; }
+       .footer-links a:hover { color: var(--brand-gold); }
+       .copyright { margin-top: 35px; padding-top: 25px; border-top: 1px solid #444; font-size: 14px; }
+       .copyright span { color: var(--brand-gold); }
+       .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: var(--brand-green); color: var(--brand-white); border-radius: 50px; padding: 18px 25px; text-decoration: none; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 100; transition: 0.3s; }
+       .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 20px rgba(46,204,113,0.4); }
+
+        @media (max-width: 768px) {
+           .hero h1 { font-size: 32px; }
+           .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="nav">
+            <img src="logo.jpg" alt="KASTHURI Logo" class="logo-img">
+            <div class="nav-links">
+                <a href="#products">Products</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#about">About</a>
+                <a href="https://wa.me/94707871246">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>100% Pure <span>Ceylon Spices</span></h1>
+            <p>රත්නපුරේ අපේම වත්තෙන්, කෙලින්ම ඔබේ මුළුතැන්ගෙට</p>
+            <a href="#products" class="btn-main">Shop Now</a>
+        </div>
+    </div>
+
+    <!-- Products -->
+    <div class="container" id="products">
+        <h2 class="section-title">Our <span>Products</span></h2>
+        <p class="section-subtitle">KASTHURI Healthy Food Products - Quality Guaranteed</p>
+        <div class="products-grid">
+
+            <!-- Turmeric Powder -->
+            <div class="product" data-base-price="450" data-product="TUMERIC POWDER">
+                <img src="turmeric.jpg" alt="Turmeric Powder">
+                <div class="product-content">
+                    <h3>TUMERIC POWDER</h3>
+                    <p>Grade A1 Quality. කහ. කෘතිම සුවඳකාරක නැත. 100% Natural.</p>
+
+                    <div class="qty-controls">
+                        <div class="qty-row">
+                            <span class="qty-label">ප්‍රමාණය:</span>
+                            <select class="qty-select" onchange="updatePrice(this)">
+                                <option value="100">100g</option>
+                                <option value="250">250g</option>
+                                <option value="500">500g</option>
+                                <option value="1000">1kg</option>
+                            </select>
+                        </div>
+                        <div class="qty-row">
+                            <span class="qty-label">ගණන:</span>
+                            <div class="qty-input-group">
+                                <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" onchange="updatePrice(this)">
+                                <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-wrap">
+                        <span class="price">Rs. 450</span>
+                    </div>
+                    <div class="total-price">Total: Rs. 450</div>
+                    <button class="btn" onclick="orderNow(this)">Order on WhatsApp</button>
+                </div>
+            </div>
+
+            <!-- Black Pepper -->
+            <div class="product" data-base-price="380" data-product="BLACK PEPPER">
+                <img src="pepper.png" alt="Black Pepper">
+                <div class="product-content">
+                    <h3>BLACK PEPPER</h3>
+                    <p>රත්නපුරේ උඩරට. අව්වේ හොඳට වේලාගත් ගම්මිරිස්.</p>
+
+                    <div class="qty-controls">
+                        <div class="qty-row">
+                            <span class="qty-label">ප්‍රමාණය:</span>
+                            <select class="qty-select" onchange="updatePrice(this)">
+                                <option value="100">100g</option>
+                                <option value="250">250g</option>
+                                <option value="500">500g</option>
+                                <option value="1000">1kg</option>
+                            </select>
+                        </div>
+                        <div class="qty-row">
+                            <span class="qty-label">ගණන:</span>
+                            <div class="qty-input-group">
+                                <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" onchange="updatePrice(this)">
+                                <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-wrap">
+                        <span class="price">Rs. 380</span>
+                    </div>
+                    <div class="total-price">Total: Rs. 380</div>
+                    <button class="btn" onclick="orderNow(this)">Order on WhatsApp</button>
+                </div>
+            </div>
+
+            <!-- Curry Powder -->
+            <div class="product" data-base-price="320" data-product="ROASTED CURRY POWDER">
+                <img src="curry-powder.jpg" alt="Curry Powder">
+                <div class="product-content">
+                    <h3>ROASTED CURRY POWDER</h3>
+                    <p>අම්මා හදන රෙසිපිය. පාරම්පරික බැදපු තුනපහ.</p>
+
+                    <div class="qty-controls">
+                        <div class="qty-row">
+                            <span class="qty-label">ප්‍රමාණය:</span>
+                            <select class="qty-select" onchange="updatePrice(this)">
+                                <option value="250">250g</option>
+                                <option value="500">500g</option>
+                                <option value="1000">1kg</option>
+                            </select>
+                        </div>
+                        <div class="qty-row">
+                            <span class="qty-label">ගණන:</span>
+                            <div class="qty-input-group">
+                                <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" onchange="updatePrice(this)">
+                                <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-wrap">
+                        <span class="price">Rs. 320</span>
+                    </div>
+                    <div class="total-price">Total: Rs. 320</div>
+                    <button class="btn" onclick="orderNow(this)">Order on WhatsApp</button>
+                </div>
+            </div>
+
+            <!-- Cardamom -->
+            <div class="product" data-base-price="850" data-product="CARDAMOM / ENASAAL">
+                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" alt="Cardamom">
+                <div class="product-content">
+                    <h3>CARDAMOM / ENASAAL</h3>
+                    <p>උඩරට නැවුම් කරදමුංගු. තේ, කෑම, Sweets වලට.</p>
+
+                    <div class="qty-controls">
+                        <div class="qty-row">
+                            <span class="qty-label">ප්‍රමාණය:</span>
+                            <select class="qty-select" onchange="updatePrice(this)">
+                                <option value="50">50g</option>
+                                <option value="100">100g</option>
+                                <option value="250">250g</option>
+                                <option value="500">500g</option>
+                            </select>
+                        </div>
+                        <div class="qty-row">
+                            <span class="qty-label">ගණන:</span>
+                            <div class="qty-input-group">
+                                <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" onchange="updatePrice(this)">
+                                <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-wrap">
+                        <span class="price">Rs. 850</span>
+                    </div>
+                    <div class="total-price">Total: Rs. 850</div>
+                    <button class="btn" onclick="orderNow(this)">Order on WhatsApp</button>
+                </div>
+            </div>
+
+            <!-- Cinnamon -->
+            <div class="product" data-base-price="650" data-product="CINNAMON STICKS">
+                <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=400" alt="Cinnamon">
+                <div class="product-content">
+                    <h3>CINNAMON STICKS</h3>
+                    <p>True Ceylon Cinnamon. Alba Grade. ලෝකේ හොඳම කුරුඳු.</p>
+
+                    <div class="qty-controls">
+                        <div class="qty-row">
+                            <span class="qty-label">ප්‍රමාණය:</span>
+                            <select class="qty-select" onchange="updatePrice(this)">
+                                <option value="100">100g</option>
+                                <option value="250">250g</option>
+                                <option value="500">500g</option>
+                                <option value="1000">1kg</option>
+                            </select>
+                        </div>
+                        <div class="qty-row">
+                            <span class="qty-label">ගණන:</span>
+                            <div class="qty-input-group">
+                                <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" onchange="updatePrice(this)">
+                                <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-wrap">
+                        <span class="price">Rs. 650</span>
+                    </div>
+                    <div class="total-price">Total: Rs. 650</div>
+                    <button class="btn" onclick="orderNow(this)">Order on WhatsApp</button>
+                </div>
+            </div>
+
+            <!-- Chilli Powder -->
+            <div class="product" data-base-price="280" data-product="CHILLI POWDER">
+                <img src="https://images.unsplash.com/photo-1608797178974-15b35a64ede9?w=400" alt="Chilli Powder">
+                <div class="product-content">
+                    <h3>CHILLI POWDER</h3>
+                    <p>වේලුණු නයි මිරිස් වලින්. සැරට, පාටට.</p>
+
+                    <div class="qty-controls">
+                        <div class="qty-row">
+                            <span class="qty-label">ප්‍රමාණය:</span>
+                            <select class="qty-select" onchange="updatePrice(this)">
+                                <option value="250">250g</option>
+                                <option value="500">500g</option>
+                                <option value="1000">1kg</option>
+                            </select>
+                        </div>
+                        <div class="qty-row">
+                            <span class="qty-label">ගණන:</span>
+                            <div class="qty-input-group">
+                                <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" onchange="updatePrice(this)">
+                                <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-wrap">
+                        <span class="price">Rs. 280</span>
+                    </div>
+                    <div class="total-price">Total: Rs. 280</div>
+                    <button class="btn" onclick="orderNow(this)">Order on WhatsApp</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Why Us -->
+    <div class="features" id="about">
+        <h2 class="section-title">Why Choose <span>KASTHURI?</span></h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">🌿</div>
+                <h3>100% <span>Pure</span> & Natural</h3>
+                <p>කිසිම කෘතිම ද්‍රව්‍යයක්, පාට, සුවඳකාරක නෑ. අපේම වත්තෙන් කඩන නැවුම් කුළුබඩු.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚚</div>
+                <h3>Rathnapura-wide <span>COD</span></h3>
+                <p>ලංකාවේ ඕනෑම තැනකට Cash on Delivery. ගෙදරටම ගෙනත් දෙනවා දවස් 2-3න්.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">✅</div>
+                <h3><span>Quality</span> Guaranteed</h3>
+                <p>සතුටු නැත්නම් සල්ලි ආපහු. අපි Quality එක ගැන 100% වග කියනවා.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="reviews" id="reviews">
+        <h2 class="section-title">Customer <span>Reviews</span></h2>
+        <p class="section-subtitle">අපේ Customers ලා කියන දේ</p>
+        <div class="reviews-grid">
+            <div class="review">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"කුරුඳු එක පට්ටම සුවඳයි. අම්මා ගොඩක් කැමති උනා. Packaging එකත් සුපිරි. අනිවා ආයෙත් order කරනවා!"</p>
+                <p class="review-author">Vinitha Ranasinghe</p>
+                <p class="review-location">Waththahena</p>
+            </div>
+            <div class="review">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"ගම්මිරිස් ටික මාර සැරයි. කඩේ ඒවට වඩා ගොඩක් වෙනස්. COD තියෙන එක ලොකු පහසුවක්. Thanks KASTHURI!"</p>
+                <p class="review-author">Nimal Jayasuriya</p>
+                <p class="review-location">Yakdhehi waththa</p>
+            </div>
+            <div class="review">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Starter Pack එක ගත්තා. සේරම බඩු quality. ගානත් සාධාරණයි. රත්නපුරේ බඩු කියන්නේ ඉතින් වෙනම රසක්."</p>
+                <p class="review-author">Harshaka Nuwan</p>
+                <p class="review-location">Rathnapura</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="logo.jpg" alt="KASTHURI Logo" class="footer-logo">
+        <h3>KASTHURI HEALTHY FOOD PRODUCTS</h3>
+        <p><strong>Call/WhatsApp:</strong> 0707871246</p>
+        <p><strong>Location:</strong> Rathnapura, Sri Lanka</p>
+        <div class="footer-links">
+            <a href="#products">Products</a>
+            <a href="#reviews">Reviews</a>
+            <a href="https://wa.me/94707871246">Contact</a>
+        </div>
+        <p class="copyright">© 2026 KASTHURI Healthy Food Products. All Rights Reserved.<br>Pure Ceylon Spices from the <span>Heart of Rathnapura</span>.</p>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/94740318753?text=Hello KASTHURI, කුළුබඩු order කරන්න ඕන" class="whatsapp-float">💬 Chat with Us</a>
+
+    <!-- JavaScript for Quantity System -->
+    <script>
+        // Price calculation based on weight
+        const priceMultipliers = {
+            50: 1,
+            100: 1,
+            250: 2.2,
+            500: 4,
+            1000: 7.5
+        };
+
+        function updatePrice(element) {
+            const product = element.closest('.product');
+            const basePrice = parseInt(product.dataset.basePrice);
+            const select = product.querySelector('.qty-select');
+            const qtyInput = product.querySelector('.qty-input');
+            const weight = parseInt(select.value);
+            const qty = parseInt(qtyInput.value);
+
+            // Calculate unit price based on weight
+            const multiplier = priceMultipliers[weight] || 1;
+            const unitPrice = Math.round(basePrice * multiplier);
+            const totalPrice = unitPrice * qty;
+
+            // Update display
+            product.querySelector('.price').textContent = `Rs. ${unitPrice.toLocaleString()}`;
+            product.querySelector('.total-price').textContent = `Total: Rs. ${totalPrice.toLocaleString()}`;
+        }
+
+        function changeQty(btn, change) {
+            const input = btn.parentElement.querySelector('.qty-input');
+            let newQty = parseInt(input.value) + change;
+            if (newQty < 1) newQty = 1;
+            input.value = newQty;
+            updatePrice(input);
+        }
+
+        function orderNow(btn) {
+            const product = btn.closest('.product');
+            const productName = product.dataset.product;
+            const select = product.querySelector('.qty-select');
+            const qtyInput = product.querySelector('.qty-input');
+            const weight = select.value;
+            const qty = qtyInput.value;
+            const totalText = product.querySelector('.total-price').textContent;
+
+            const weightText = weight >= 1000? `${weight/1000}kg` : `${weight}g`;
+            const message = `Hello KASTHURI! මට order කරන්න ඕන:\n\nProduct: ${productName}\nප්‍රමාණය: ${weightText}\nගණන: ${qty}\n${totalText}\n\nCOD දාන්න.`;
+            const whatsappURL = `https://wa.me/94707871246?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Initialize all prices on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.product').forEach(product => {
+                updatePrice(product.querySelector('.qty-select'));
+            });
+        });
+    </script>
+
+</body>
+</html>
+                        
