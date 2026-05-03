@@ -434,7 +434,13 @@
             product.querySelector('.price').textContent = `Rs. ${unitPrice.toLocaleString()}`;
             product.querySelector('.total-price').textContent = `Total: Rs. ${totalPrice.toLocaleString()}`;
         }
-
+          // Update all prices on page load
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.product').forEach(function(product) {
+        const select = product.querySelector('.qty-select');
+        if (select) updatePrice(select);
+    });
+});
         function changeQty(btn, change) {
             const input = btn.parentElement.querySelector('.qty-input');
             let newQty = parseInt(input.value) + change;
